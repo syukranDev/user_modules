@@ -19,6 +19,8 @@ PostgresSQL + Sequelize ORM
 
 5. /api/user/delete (POST: Delete exisiting User)
    Payload: { id }
+
+Note: These are unprotected API routes, no auth middleware.
 ```
 
 ## Steps
