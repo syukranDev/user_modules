@@ -165,4 +165,48 @@ User.post('/update', async (req, res) => {
     return res.send({ status: 'success', message: `User Id (${id}) updated successfully.` });
 })
 
+//Delete existing User
+const qDeleteExisitingUser = `DELETE FROM users
+WHERE id=:id`
+
+User.post('/delete', async (req, res) => {
+    let { id } = req.body
+
+    if (!id) return res.status(422).send({errMsg: 'Missing id parameter.'});
+
+    let isUserExist, transaction;
+
+    try{
+        isUserExist = await db.users.findOne({
+            where:{
+                id :{[Op.eq]: id}
+            },
+            logging: console.log
+        });
+        
+        if (!isUserExist) return res.status(422).send({errMsg: 'User id not exist.'})
+
+        transaction = await sq.transaction();
+        await sq.query(qDeleteExisitingUser,{
+            type: sq.QueryTypes.DELETE,
+            replacements : {
+                id
+            },
+            logging: console.log, transaction
+          })
+
+        await transaction.commit();
+
+    } catch(e) {
+        console.error(e)
+        if(transaction) await transaction.rollback();
+        return res.status(500).send({errMsg: `Unable to delete user id: ${id}`});
+    }
+    return res.send({ status: 'success', message: `User Id (${id}) deleted successfully.` });
+})
+
+User.all('/*', (req, res, next) => {
+    res.status(404).send('API not found');
+  });
+
 module.exports = User
