@@ -41,8 +41,8 @@ CREATE TABLE "users" (
 );
 
 //Below is optional for dummy data
-INSERT INTO users ("id", "password", "role", "full_name", "active", "phone", "email", "created_by", "created_at", "updated_at", "age", "birth_date") VALUES ('abu', 'mypassword', 'superadmin', 'Abu Bob', 'true', '0125242221445', 'abu@x.com', 'system', NOW(), NOW(), 27, '1996-01-24');
-INSERT INTO users ("id", "password", "role", "full_name", "active", "phone", "email", "created_by", "created_at", "updated_at", "age", "birth_date") VALUES ('ali', 'mypassword', 'superadmin', 'Ali King', 'false', NULL, 'john@x.com', 'system', NOW(), NOW(), 56, '1952-09-12');
+INSERT INTO users ("id", "password", "role", "full_name", "active", "phone", "email", "created_by", "created_at", "updated_at", "age", "birth_date") VALUES ('abu', '$2b$10$hT4HgSC0urtLjpISpKD4Pe3xOQsTvSI9Oq735USgWGa/auOZIKHEW', 'superadmin', 'Abu Bob', 'true', '0125242221445', 'abu@x.com', 'system', NOW(), NOW(), 27, '1996-01-24');
+INSERT INTO users ("id", "password", "role", "full_name", "active", "phone", "email", "created_by", "created_at", "updated_at", "age", "birth_date") VALUES ('ali', '$2b$10$P6rgq06rGg/cGjt4LxbVjef66xaLndjyIFfYQgOjQ.kpm62yad25i', 'superadmin', 'Ali King', 'false', NULL, 'john@x.com', 'system', NOW(), NOW(), 56, '1952-09-12');
 ```
 
 2. Create a .env file in your directory and fill your DB creds.
