@@ -63,5 +63,5 @@ npm i
 npm run dev
 ```
 
-3. (Optional) Sample Terraform script  to deploy into EC2 `./terraform/deployment.tf`
+4. (Optional) Sample Terraform script  to deploy into EC2 `./terraform/deployment.tf`
   
